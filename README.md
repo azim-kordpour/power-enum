@@ -26,7 +26,9 @@ enum PostStatus: string
 ```
 Now, let's take a closer look at the methods.
 
-### In Laravel
+<br>
+
+## In Laravel
 [Eloquent allows you to cast your attribute values to PHP Enums](https://laravel.com/docs/10.x/eloquent-mutators#enum-casting).
 
 ```php
@@ -62,6 +64,7 @@ Returns boolean:
 ```php
 true
 ```
+<br>
 
 #### Check if the status of the model equals the given value:
 ```php
@@ -74,6 +77,7 @@ Returns boolean:
 ```php
 false
 ```
+<br>
 
 #### This method works like `equals`:
 ```php
@@ -86,6 +90,7 @@ Returns boolean:
 ```php
 false
 ```
+<br>
 
 #### Get the label of the status:
 ```php
@@ -100,7 +105,7 @@ Returns the value of the case if you have not set labels:
 ```
 For setting custom labels and Seeing all methods in PHP projects, take a look at the next section.
 
-### All Methods
+## All Methods
 
 #### Get the values of `PostStatus` statically:
 ```php
@@ -113,6 +118,7 @@ Returns an array:
     'inactive'
 ]
 ```
+<br>
 
 #### Get the names of `PostStatus` statically:
 ```php
@@ -125,6 +131,7 @@ Returns an array:
     'Inactive'
 ]
 ```
+<br>
 
 #### Get the names and values of `PostStatus` statically:
 ```php
@@ -137,6 +144,7 @@ Returns an array:
     'Inactive' => 'inactive'
 ]
 ```
+<br>
 
 #### Check if the case is the active one:
 ```php
@@ -146,6 +154,7 @@ Returns boolean:
 ```php
 true
 ```
+<br>
 
 #### Check if the case equals the given value:
 ```php
@@ -155,6 +164,7 @@ Returns boolean:
 ```php
 false
 ```
+<br>
 
 #### This method works like `equals`:
 ```php
@@ -164,6 +174,7 @@ Returns boolean:
 ```php
 false
 ```
+<br>
 
 #### Initiate the class from name:
 ```php
@@ -173,6 +184,7 @@ Returns the Enum object:
 ```php
 PostStatus::Active
 ```
+<br>
 
 #### Get the label of the case:
 ```php
@@ -182,6 +194,7 @@ Returns the value of the case if you have not set labels:
 ```php
 "active"
 ```
+<br>
 
 #### Get the labels of the cases:
 ```php
@@ -194,6 +207,7 @@ Returns the values of the cases if you have not set labels:
     'inactive' => 'inactive'
 ]
 ```
+<br>
 
 #### You can write custom label for the cases in your Enum class:
 ```php
@@ -216,7 +230,7 @@ Returns:
 ```php
 "published post"
 ```
-Then, the method of `getLabels`:
+And the method of `getLabels`:
 ```php
 PostStatus::Active->getLables();
 ```
@@ -227,6 +241,7 @@ Returns:
     'inactive' => 'draft post'
 ]
 ```
+<br>
 
 ### Testing
 ```sh
