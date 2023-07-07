@@ -107,6 +107,8 @@ Returns the value of the case if you have not set labels:
 ```
 For setting custom labels and Seeing all methods in PHP projects, take a look at the next section.
 
+<br>
+
 ## All Methods
 
 #### Get the values of `PostStatus` statically:
