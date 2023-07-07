@@ -8,6 +8,8 @@ You can install the package via composer:
   ```sh
   composer require azimkordpour/power-enum
   ```
+<br>
+
 ## Usage Instructions
 To use the `PowerEnum` trait in your Enum class, simply import it like this:
 
