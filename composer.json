@@ -1,0 +1,42 @@
+{
+  "name": "azimkordpour/power-enum",
+  "description": "This light package provides some methods to your Enum classes to make the most of them.",
+  "keywords": [
+    "php",
+    "enum",
+    "laravel"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "AzimKordpour\\PowerEnum\\": "src/"
+    },
+    "files": [
+      "src/Helpers/functions.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Azim Kordpour",
+      "email": "mojtaba.kordpour@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "pestphp/pest": "^2.8"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "scripts": {
+    "test": "./vendor/bin/pest"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
