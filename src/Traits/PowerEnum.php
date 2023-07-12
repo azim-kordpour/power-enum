@@ -2,6 +2,7 @@
 
 namespace AzimKordpour\PowerEnum\Traits;
 
+use BadMethodCallException;
 use ErrorException;
 
 trait PowerEnum
@@ -118,6 +119,10 @@ trait PowerEnum
     public function __call(string $name, array $arguments): bool
     {
         $caseName = getStringAfterIsForEnumName(string: $name);
+
+        if(is_null($caseName)){
+            throw new BadMethodCallException("Undefined method '$name'");
+        }
 
         return self::fromName(name: $caseName)->value === $this->value;
     }
