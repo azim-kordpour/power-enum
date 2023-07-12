@@ -12,7 +12,7 @@ if (!function_exists('getStringAfterIsForEnumName')) {
             return substr($string, $pos + 2);
         }
 
-        if (!$pos && substr($string, $pos, 2) === 'iS' || !$pos && substr($string, $pos, 2) === 'iS') {
+        if (!$pos && substr($string, $pos, 2) === 'iS' || !$pos && substr($string, $pos, 2) === 'Is') {
             throw new BadMethodCallException("'is' should be lower case.");
         }
 
