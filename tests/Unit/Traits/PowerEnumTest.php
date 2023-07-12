@@ -114,3 +114,7 @@ test(description: 'The method of "is+Value" works.', closure: function () {
         ->and(value: TestPost::Active->isInactive())
         ->toBeFalse();
 });
+
+test(description: 'the "__call" throws exception if the method does not exist', closure: function () {
+    expect(value: TestPost::Active->exists());
+})->throws(exception: BadMethodCallException::class, exceptionMessage: "Undefined method 'exists'");
