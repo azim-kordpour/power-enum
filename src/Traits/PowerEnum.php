@@ -117,7 +117,7 @@ trait PowerEnum
      */
     public function __call(string $name, array $arguments): bool
     {
-        $caseName = getStringAfterIs(string: $name);
+        $caseName = getStringAfterIsForEnumName(string: $name);
 
         return self::fromName(name: $caseName)->value === $this->value;
     }
