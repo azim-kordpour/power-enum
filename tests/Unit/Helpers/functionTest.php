@@ -10,3 +10,8 @@ it(description: 'returns null if the given string does not contain "is".', closu
     expect(value: getStringAfterIsForEnumName(string: 'active'))
         ->toBeNull();
 });
+
+it(description: 'throws the exception if "is" not lower case.', closure: function (string $value) {
+    expect(value: getStringAfterIsForEnumName(string: $value));
+})->throws(BadMethodCallException::class, "'is' should be lower case.")
+->with(['Is', 'iS']);
