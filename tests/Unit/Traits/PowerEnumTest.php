@@ -99,6 +99,27 @@ test(description: 'The method of "label" works.', closure: function () {
         ->toBe(expected: 'inactive');
 });
 
+test(description: 'The method of "toUpper" works.', closure: function () {
+    expect(value: TestPost::Active->toUpper())
+        ->toBe(expected: 'ACTIVE')
+        ->and(value: TestPost::Inactive->toUpper())
+        ->toBe(expected: 'INACTIVE');
+});
+
+test(description: 'The method of "toLower" works.', closure: function () {
+    expect(value: TestPost::Active->toLower())
+        ->toBe(expected: 'active')
+        ->and(value: TestPost::Inactive->toLower())
+        ->toBe(expected: 'inactive');
+});
+
+test(description: 'The method of "toUcFirst" works.', closure: function () {
+    expect(value: TestPost::Active->toUcFirst())
+        ->toBe(expected: 'Active')
+        ->and(value: TestPost::Inactive->toUcFirst())
+        ->toBe(expected: 'Inactive');
+});
+
 test(description: 'The method of "fromName" works.', closure: function () {
     expect(value: TestPost::fromName('Active'))
         ->toBe(expected: TestPost::Active);
