@@ -94,6 +94,30 @@ trait PowerEnum
     }
 
     /**
+     * Get the uppercase of the value.
+     */
+    public function toUpper(): string
+    {
+        return strtoupper($this->label());
+    }
+
+    /**
+     * Get the lowercase of the value.
+     */
+    public function toLower(): string
+    {
+        return strtolower($this->label());
+    }
+
+    /**
+     * Get the value's first character uppercase.
+     */
+    public function toUcFirst(): string
+    {
+        return ucfirst($this->label());
+    }
+
+    /**
      * Get the case from the given name.
      *
      * @throws ErrorException
@@ -120,7 +144,7 @@ trait PowerEnum
     {
         $caseName = getStringAfterIsForEnumName(string: $name);
 
-        if(is_null($caseName)){
+        if (is_null($caseName)) {
             throw new BadMethodCallException("Undefined method '$name'");
         }
 
