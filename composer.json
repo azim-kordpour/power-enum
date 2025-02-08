@@ -16,6 +16,11 @@
       "src/Helpers/functions.php"
     ]
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
   "authors": [
     {
       "name": "Azim Kordpour",
@@ -27,7 +32,8 @@
     "php": "^8.1"
   },
   "require-dev": {
-    "pestphp/pest": "^2.8"
+    "pestphp/pest": "^2.8",
+    "phpstan/phpstan": "^2.1"
   },
   "config": {
     "allow-plugins": {
