@@ -2,6 +2,7 @@
 
 namespace AzimKordpour\PowerEnum\Traits;
 
+use BackedEnum;
 use BadMethodCallException;
 use ErrorException;
 
@@ -9,6 +10,8 @@ trait PowerEnum
 {
     /**
      * Get the values of the cases.
+     *
+     * @return array<int, string|int>
      */
     public static function values(): array
     {
@@ -17,6 +20,8 @@ trait PowerEnum
 
     /**
      * Get the names of the cases.
+     *
+     * @return array<int, string>
      */
     public static function names(): array
     {
@@ -25,6 +30,8 @@ trait PowerEnum
 
     /**
      * Get the names and the values of the cases.
+     *
+     * @return array<string, string|int>
      */
     public static function list(): array
     {
@@ -34,25 +41,25 @@ trait PowerEnum
     /**
      * Check the given value equals the value of the case.
      */
-    public function equals(mixed $value): bool
+    public function equals(BackedEnum $value): bool
     {
-        if (is_object(value: $value) && property_exists(object_or_class: $value, property: 'value')) {
-            $value = $value->value;
-        }
-
-        return $this->value == $value;
+        return $this->value === $value->value;
     }
 
     /**
      * This is another name for the method "equals".
      */
-    public function is(mixed $value): bool
+    public function is(BackedEnum $value): bool
     {
         return $this->equals(value: $value);
     }
 
     /**
      * Set the labels of all the cases.
+     *
+     * Keys are the values of the cases and the values are the labels.
+     *
+     * @return array<string, string>
      */
     public static function setLabels(): array
     {
@@ -63,6 +70,8 @@ trait PowerEnum
     /**
      * Get the labels of the cases.
      *
+     * @return array<string, string>
+     *
      * @throws ErrorException
      */
     public static function getLabels(): array
@@ -71,12 +80,18 @@ trait PowerEnum
         $values = self::values();
 
         if (empty($labels)) {
-            return array_combine(keys: $values, values: $values);
+            $stringValues = array_map(fn(int|string $value) => strval($value), $values);
+
+            return array_combine(keys: $stringValues, values: $stringValues);
         }
 
-        foreach (array_keys(array: $labels) as $value) {
-            if (!in_array(needle: $value, haystack: $values)) {
-                throw new ErrorException(message: "$value is an invalid value.");
+        foreach ($labels as $label => $value) {
+            if (!array_key_exists(key: $label, array: $values)) {
+                throw new ErrorException(message: "$label is not a value of the Enum's case.");
+            }
+
+            if(!is_string(value: $value)){
+                throw new ErrorException(message: "The value of the label must be a string.");
             }
         }
 
@@ -95,6 +110,8 @@ trait PowerEnum
 
     /**
      * Get the uppercase of the value.
+     *
+     * @throws ErrorException
      */
     public function toUpper(): string
     {
@@ -103,6 +120,8 @@ trait PowerEnum
 
     /**
      * Get the lowercase of the value.
+     *
+     * @throws ErrorException
      */
     public function toLower(): string
     {
@@ -111,6 +130,8 @@ trait PowerEnum
 
     /**
      * Get the value's first character uppercase.
+     *
+     * @throws ErrorException
      */
     public function toUcFirst(): string
     {
@@ -137,6 +158,8 @@ trait PowerEnum
      * Define a dynamic method to check the current case.
      * Example: the name of a case is "Active",
      * so isActive() return if the case is either "Active" or not.
+     *
+     * @param array<int, string> $arguments
      *
      * @throws ErrorException
      */

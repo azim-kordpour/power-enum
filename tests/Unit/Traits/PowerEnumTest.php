@@ -1,28 +1,7 @@
 <?php
 
-use AzimKordpour\PowerEnum\Traits\PowerEnum;
-
-enum TestPost: string
-{
-    use PowerEnum;
-
-    case Active = 'active';
-    case Inactive = 'inactive';
-}
-
-enum TestComment: string
-{
-    use PowerEnum;
-
-    case New = 'new';
-
-    public static function setLabels(): array
-    {
-        return [
-            'old' => 'new comment'
-        ];
-    }
-}
+use Tests\Unit\Examples\TestComment;
+use Tests\Unit\Examples\TestPost;
 
 test(description: 'The method of "values" works.', closure: function () {
     expect(value: TestPost::values())
@@ -52,22 +31,22 @@ test(description: 'The method of "list" works.', closure: function () {
 });
 
 test(description: 'The method of "equals" works.', closure: function () {
-    expect(value: TestPost::Active->equals(value: 'active'))
+    expect(value: TestPost::Active->equals(value: TestPost::Active))
         ->toBeTrue()
         ->and(value: TestPost::Active->equals(value: TestPost::Active))
         ->toBeTrue()
-        ->and(value: TestPost::Active->equals(value: 'inactive'))
+        ->and(value: TestPost::Active->equals(value: TestPost::Inactive))
         ->toBeFalse()
         ->and(value: TestPost::Active->equals(value: TestPost::Inactive))
         ->toBeFalse();
 });
 
 test(description: 'The method of "is" works.', closure: function () {
-    expect(value: TestPost::Active->is(value: 'active'))
+    expect(value: TestPost::Active->is(value: TestPost::Active))
         ->toBeTrue()
         ->and(value: TestPost::Active->is(value: TestPost::Active))
         ->toBeTrue()
-        ->and(value: TestPost::Active->is(value: 'inactive'))
+        ->and(value: TestPost::Active->is(value: TestPost::Inactive))
         ->toBeFalse()
         ->and(value: TestPost::Active->is(value: TestPost::Inactive))
         ->toBeFalse();
@@ -89,8 +68,9 @@ test(description: 'The method of "getLabels" works.', closure: function () {
 });
 
 test(description: 'The method of "getLabels" t.', closure: function () {
-    expect(value: TestComment::getLabels());
-})->throws(exception: ErrorException::class, exceptionMessage: "old is an invalid value.");
+    expect(fn () =>  TestComment::getLabels())
+    ->toThrow(exception: ErrorException::class, exceptionMessage: "old is not a value of the Enum's case.");
+});
 
 test(description: 'The method of "label" works.', closure: function () {
     expect(value: TestPost::Active->label())
@@ -126,8 +106,9 @@ test(description: 'The method of "fromName" works.', closure: function () {
 });
 
 test(description: 'The method of "fromName" throws exception.', closure: function () {
-    TestPost::fromName('fake');
-})->throws(exception: ErrorException::class, exceptionMessage: 'The given name does not exist.');
+    expect(fn () => TestPost::fromName('fake'))
+    ->toThrow(exception: ErrorException::class, exceptionMessage: 'The given name does not exist.');
+});
 
 test(description: 'The method of "is+Value" works.', closure: function () {
     expect(value: TestPost::Active->isActive())
@@ -137,5 +118,7 @@ test(description: 'The method of "is+Value" works.', closure: function () {
 });
 
 test(description: 'the "__call" throws exception if the method does not exist', closure: function () {
-    expect(value: TestPost::Active->exists());
-})->throws(exception: BadMethodCallException::class, exceptionMessage: "Undefined method 'exists'");
+    // @phpstan-ignore-next-line
+    expect(fn() =>  TestPost::Active->exists())
+    ->toThrow(exception: BadMethodCallException::class, exceptionMessage: "Undefined method 'exists'");
+});
