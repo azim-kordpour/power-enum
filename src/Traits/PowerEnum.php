@@ -79,8 +79,8 @@ trait PowerEnum
         $labels = self::setLabels();
         $values = self::values();
 
-        if (empty($labels)) {
-            $stringValues = array_map(fn(int|string $value) => strval($value), $values);
+        if ($labels === []) {
+            $stringValues = array_map(fn(int|string $value): string => strval($value), $values);
 
             return array_combine(keys: $stringValues, values: $stringValues);
         }

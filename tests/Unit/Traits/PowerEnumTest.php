@@ -68,7 +68,7 @@ test(description: 'The method of "getLabels" works.', closure: function (): void
 });
 
 test(description: 'The method of "getLabels" t.', closure: function (): void {
-    expect(fn () =>  TestComment::getLabels())
+    expect(fn (): array =>  TestComment::getLabels())
     ->toThrow(exception: ErrorException::class, exceptionMessage: "old is not a value of the Enum's case.");
 });
 
@@ -106,7 +106,7 @@ test(description: 'The method of "fromName" works.', closure: function (): void 
 });
 
 test(description: 'The method of "fromName" throws exception.', closure: function (): void {
-    expect(fn () => TestPost::fromName('fake'))
+    expect(fn (): TestPost => TestPost::fromName('fake'))
     ->toThrow(exception: ErrorException::class, exceptionMessage: 'The given name does not exist.');
 });
 
