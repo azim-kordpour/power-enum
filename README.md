@@ -73,7 +73,7 @@ true
 $post = Post::find(1);
 
 // The status is active.
-$post->status->equals('inactive');
+$post->status->equals(PostStatus::Active);
 ```
 Returns boolean:
 ```php
@@ -86,7 +86,7 @@ false
 $post = Post::find(1);
 
 // The status is active.
-$post->status->is('inactive');
+$post->status->is(PostStatus::Active);
 ```
 Returns boolean:
 ```php
@@ -162,7 +162,7 @@ true
 
 #### Check if the case equals the given value:
 ```php
-PostStatus::Active->equals('inactive');
+PostStatus::Active->equals(AnotherEnum::Example);
 ```
 Returns boolean:
 ```php
@@ -172,7 +172,7 @@ false
 
 #### This method works like `equals`:
 ```php
-PostStatus::Active->is('inactive');
+PostStatus::Active->is(AnotherEnum::Example);
 ```
 Returns boolean:
 ```php
