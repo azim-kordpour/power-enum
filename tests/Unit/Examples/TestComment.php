@@ -20,7 +20,7 @@ enum TestComment: string
     public static function setLabels(): array
     {
         return [
-            'old' => 'new comment'
+            'old' => 'new comment',
         ];
     }
 }

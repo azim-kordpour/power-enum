@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('getStringAfterIsForEnumName')) {
+if (! function_exists('getStringAfterIsForEnumName')) {
     /**
      * Get the string after the given string.
      */

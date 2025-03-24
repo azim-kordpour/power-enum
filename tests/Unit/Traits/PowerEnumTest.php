@@ -8,7 +8,7 @@ test(description: 'The method of "values" works.', closure: function (): void {
         ->toBeArray()
         ->toBe(expected: [
             'active',
-            'inactive'
+            'inactive',
         ]);
 });
 
@@ -17,7 +17,7 @@ test(description: 'The method of "names" works.', closure: function (): void {
         ->toBeArray()
         ->toBe(expected: [
             'Active',
-            'Inactive'
+            'Inactive',
         ]);
 });
 
@@ -26,7 +26,7 @@ test(description: 'The method of "list" works.', closure: function (): void {
         ->toBeArray()
         ->toBe(expected: [
             'Active' => 'active',
-            'Inactive' => 'inactive'
+            'Inactive' => 'inactive',
         ]);
 });
 
@@ -63,13 +63,13 @@ test(description: 'The method of "getLabels" works.', closure: function (): void
         ->toBeArray()
         ->toBe(expected: [
             'active' => 'active',
-            'inactive' => 'inactive'
+            'inactive' => 'inactive',
         ]);
 });
 
 test(description: 'The method of "getLabels" t.', closure: function (): void {
-    expect(fn (): array =>  TestComment::getLabels())
-    ->toThrow(exception: ErrorException::class, exceptionMessage: "old is not a value of the Enum's case.");
+    expect(fn (): array => TestComment::getLabels())
+        ->toThrow(exception: ErrorException::class, exceptionMessage: "old is not a value of the Enum's case.");
 });
 
 test(description: 'The method of "label" works.', closure: function (): void {
@@ -107,7 +107,7 @@ test(description: 'The method of "fromName" works.', closure: function (): void 
 
 test(description: 'The method of "fromName" throws exception.', closure: function (): void {
     expect(fn (): TestPost => TestPost::fromName('fake'))
-    ->toThrow(exception: ErrorException::class, exceptionMessage: 'The given name does not exist.');
+        ->toThrow(exception: ErrorException::class, exceptionMessage: 'The given name does not exist.');
 });
 
 test(description: 'The method of "is+Value" works.', closure: function (): void {
@@ -119,6 +119,6 @@ test(description: 'The method of "is+Value" works.', closure: function (): void 
 
 test(description: 'the "__call" throws exception if the method does not exist', closure: function (): void {
     // @phpstan-ignore-next-line
-    expect(fn() =>  TestPost::Active->exists())
-    ->toThrow(exception: BadMethodCallException::class, exceptionMessage: "Undefined method 'exists'");
+    expect(fn () => TestPost::Active->exists())
+        ->toThrow(exception: BadMethodCallException::class, exceptionMessage: "Undefined method 'exists'");
 });

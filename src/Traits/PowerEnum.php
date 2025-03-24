@@ -80,18 +80,18 @@ trait PowerEnum
         $values = self::values();
 
         if ($labels === []) {
-            $stringValues = array_map(fn(int|string $value): string => strval($value), $values);
+            $stringValues = array_map(fn (int|string $value): string => strval($value), $values);
 
             return array_combine(keys: $stringValues, values: $stringValues);
         }
 
         foreach ($labels as $label => $value) {
-            if (!array_key_exists(key: $label, array: $values)) {
+            if (! array_key_exists(key: $label, array: $values)) {
                 throw new ErrorException(message: "$label is not a value of the Enum's case.");
             }
 
-            if(!is_string(value: $value)){
-                throw new ErrorException(message: "The value of the label must be a string.");
+            if (! is_string(value: $value)) {
+                throw new ErrorException(message: 'The value of the label must be a string.');
             }
         }
 
@@ -159,7 +159,7 @@ trait PowerEnum
      * Example: the name of a case is "Active",
      * so isActive() return if the case is either "Active" or not.
      *
-     * @param array<int, string> $arguments
+     * @param  array<int, string>  $arguments
      *
      * @throws ErrorException
      */
