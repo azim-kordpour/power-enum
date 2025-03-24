@@ -34,7 +34,8 @@
   "require-dev": {
     "pestphp/pest": "^2.8",
     "phpstan/phpstan": "^2.1",
-    "rector/rector": "^2.0"
+    "rector/rector": "^2.0",
+    "laravel/pint": "^1.21"
   },
   "config": {
     "allow-plugins": {
@@ -42,7 +43,10 @@
     }
   },
   "scripts": {
-    "test": "./vendor/bin/pest"
+    "test": "./vendor/bin/pest",
+    "refacto": "rector",
+    "lint": "pint",
+    "test:types": "phpstan analyse --ansi"
   },
   "minimum-stability": "stable",
   "prefer-stable": true
