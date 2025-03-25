@@ -17,7 +17,7 @@ enum TestComment: string
      *
      * @return array<string, string>
      */
-    public static function setLabels(): array
+    protected static function setLabels(): array
     {
         return [
             'old' => 'new comment',

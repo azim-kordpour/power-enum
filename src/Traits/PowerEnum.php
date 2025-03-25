@@ -61,7 +61,7 @@ trait PowerEnum
      *
      * @return array<string, string>
      */
-    public static function setLabels(): array
+    protected static function setLabels(): array
     {
         return [
         ];
@@ -76,7 +76,7 @@ trait PowerEnum
      */
     public static function getLabels(): array
     {
-        $labels = self::setLabels();
+        $labels = static::setLabels();
         $values = self::values();
 
         if ($labels === []) {
@@ -86,7 +86,7 @@ trait PowerEnum
         }
 
         foreach ($labels as $label => $value) {
-            if (! array_key_exists(key: $label, array: $values)) {
+            if (! in_array(needle: $label, haystack: $values)) {
                 throw new ErrorException(message: "$label is not a value of the Enum's case.");
             }
 
