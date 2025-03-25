@@ -2,6 +2,7 @@
 
 use Tests\Unit\Examples\TestComment;
 use Tests\Unit\Examples\TestPost;
+use Tests\Unit\Examples\TestRole;
 
 test(description: 'The method of "values" works.', closure: function (): void {
     expect(value: TestPost::values())
@@ -53,9 +54,11 @@ test(description: 'The method of "is" works.', closure: function (): void {
 });
 
 test(description: 'The method of "setLabels" works.', closure: function (): void {
-    expect(value: TestPost::setLabels())
+    expect(value: TestRole::getLabels())
         ->toBeArray()
-        ->toBeEmpty();
+        ->toBe(expected: [
+            TestRole::Admin->value => 'Administrator',
+        ]);
 });
 
 test(description: 'The method of "getLabels" works.', closure: function (): void {
